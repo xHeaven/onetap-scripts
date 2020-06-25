@@ -1,3 +1,16 @@
+/*
+Snippets for Onetap v3 - created by innocenthvh
+
+Contacts
+- Onetap Forum: https://www.onetap.com/members/innocenthvh.32884/
+- Discord: xHeaven#2143
+- Github: https://github.com/xHeaven
+- Steam: https://steamcommunity.com/id/bodyscale
+
+Please, if you plan to use my code, do not delete the credits. Thanks!
+*/
+
+
 /**
  * 
  * @param {entity} entity // The entity we want to check if the next shot on thorax/pelvis/body to it can be lethal.
