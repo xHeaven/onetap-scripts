@@ -206,7 +206,7 @@ function IsHittable(entity, hitboxes) {
 }
 
 /**
- * Credits: edeen
+ * Credits: april
  * @param {string} string // The formattable string
  * @param {object} values // The values in order to replace % charachters in the given string
  */
