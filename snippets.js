@@ -92,14 +92,22 @@ function IsCrouching(entity) {
 
 /**
  * 
+ * @param {entity} entity // The entity whom speed we want to get
+ * @returns {float} // Returns the speed of the given entity
+ */
+function GetSpeed(entity) {
+	var velocity = Entity.GetProp(entity, "CBasePlayer", "m_vecVelocity[0]");
+
+	return Math.sqrt(velocity[0] * velocity[0] + velocity[1] * velocity[1]);
+}
+
+/**
+ * 
  * @param {entity} entity // The entity we want to check if it is standing.
  * @returns {boolean} // Returns true if the given entity is standing, otherwise false.
  */
 function IsStanding(entity) {
-	var entityVelocity = Entity.GetProp(entity, "CBasePlayer", "m_vecVelocity[0]");
-	var entitySpeed = Math.sqrt(entityVelocity[0] * entityVelocity[0] + entityVelocity[1] * entityVelocity[1]);
-
-	if (entitySpeed <= 5) return true;
+	if (GetSpeed(entity) <= 5) return true;
 	else return false;
 }
 
@@ -109,8 +117,7 @@ function IsStanding(entity) {
  * @returns {boolean} // Returns true if the given entity is slow walking, otherwise false.
  */
 function IsSlowWalking(entity) {
-	var entityVelocity = Entity.GetProp(entity, "CBasePlayer", "m_vecVelocity[0]");
-	var entitySpeed = Math.sqrt(entityVelocity[0] * entityVelocity[0] + entityVelocity[1] * entityVelocity[1]);
+	var entitySpeed = GetSpeed(entity);
 
 	if (entitySpeed >= 10 && entitySpeed <= 85) return true;
 	else return false;
@@ -196,4 +203,22 @@ function IsHittable(entity, hitboxes) {
 	}
 
 	return result;
+}
+
+/**
+ * Credits: edeen
+ * @param {string} string // The formattable string
+ * @param {object} values // The values in order to replace % charachters in the given string
+ */
+function format(string, values) {
+	const array = string.split("%");
+	const final_string = array[0];
+
+	if (array.length - 1 != values.length)
+		throw new Error("[Format] The amount of placeholders does not match the amount of values.");
+
+	for (var i = 1; i < array.length; i++)
+		final_string += values[i - 1] + array[i];
+
+	return final_string;
 }
