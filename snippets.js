@@ -208,7 +208,7 @@ function IsHittable(entity, hitboxes) {
 /**
  * Credits: april
  * @param {string} string // The formattable string
- * @param {object} values // The values in order to replace % charachters in the given string
+ * @param {object} values // The values in order to replace % characters in the given string
  */
 function format(string, values) {
 	const array = string.split("%");
